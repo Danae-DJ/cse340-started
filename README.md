@@ -48,3 +48,5 @@ When you installed Git and cloned the remote repository in week 1, you should ha
 
 Here explain the files!
 https://byui-cse.github.io/cse340-ww-content/views/starter-files.html
+
+note: You should never alter anything inside the node_modules folder or the pnpm-lock.yaml file!
