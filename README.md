@@ -50,3 +50,6 @@ Here explain the files!
 https://byui-cse.github.io/cse340-ww-content/views/starter-files.html
 
 note: You should never alter anything inside the node_modules folder or the pnpm-lock.yaml file!
+
+All activities EJES TEMPLATES:
+https://byui-cse.github.io/cse340-ww-course/week01/prepare-2-ejs-templates.html
