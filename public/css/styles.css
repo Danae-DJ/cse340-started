@@ -232,7 +232,7 @@ footer{
 /* Mobile (max 600px) */
 @media (max-width: 600px) {
   header {
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
   }
 
