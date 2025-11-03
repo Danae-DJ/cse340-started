@@ -133,26 +133,35 @@ main{
   margin-bottom: 10px;
   color:var(--color2);
 }
-/*.delorean{
-  background: url(../images/vehicles/delorean.jpg) center/cover no-repeat;
+.delorean{
+  background: url(/images/vehicles/delorean.jpg) center/cover no-repeat;
   padding: 20px;
   border-radius: 9px;
-}*/
-.delorean img {
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(2,(1fr));
+}
+/*.delorean img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 9px;
-  display: block;
-}
+}*/
 .DMC{
+  grid-column: 1;
+  grid-row: -1;
+  text-align: center;
   background: var(--color6);
   margin: 5px;
   padding: 15px;
   color: var(--color3);
   border-radius: 5px;
+  width: 250px;
 }
 
+.DMC img {
+  width: 100px;
+  height: auto;
+}
 /*parts*/
 .parts {
   display: flex;
@@ -189,32 +198,45 @@ main{
 }
 
 .three .text div {
-  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--color6);
 }
 
 .three .text .A{
   grid-row: 1;
   grid-column: 1;
-  justify-items: center;
   
 }
 .three .text .B {
   grid-row: 1;
   grid-column: 2;
-  justify-items: center;
 }
-.three .text .c {
+.three .text .C {
   grid-row: 2;
   grid-column: 1;
-  justify-items: center;
 }
 
-.three .text .A {
+.three .text .D {
   grid-row: 2;
   grid-column: 2;
-  justify-items: center;
+}
+
+.A, .B, .C, .D{
+  width: 150px;
+  height: 150px;
+  margin: 25px;
+}
+.three .text img {
+  width: 100px;
+  height: auto;
+}
+
+.three .text .B img{
+  width: 80px;
+  height: auto;
 }
 
 /*footer*/
@@ -252,9 +274,9 @@ footer{
     grid-template-columns: 1fr;
   }
 
-  .DMC {
+  /*.DMC {
     text-align: center;
-  }
+  }*/
 
   .siteName a {
     font-size: 1.5rem;
