@@ -127,7 +127,7 @@ main{
   gap:10px;
   align-items: center;
 }
-.one #subtitle {
+.one #welcome {
   font-size: 2rem;
   grid-column: 1/-1;
   margin-bottom: 10px;
@@ -173,7 +173,7 @@ main{
 .two{
   grid-column: 2/3
 }
-.two #sub {
+.two #description {
   font-size: 2rem;
   margin-bottom: 10px;
 }
@@ -186,7 +186,7 @@ main{
 .three{
   grid-column: 1/-1
 }
-.three #subti {
+.three #upgrade {
   font-size: 2rem;
   margin-bottom: 10px;
 }
