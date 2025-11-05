@@ -186,7 +186,7 @@ main{
 .three{
   grid-column: 1/-1
 }
-.three #subtitle {
+.three #subti {
   font-size: 2rem;
   margin-bottom: 10px;
 }
