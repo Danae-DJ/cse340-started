@@ -171,9 +171,9 @@ main{
 
 /*section two*/
 .two{
-  grid-column: 1/-1
+  grid-column: 2/3
 }
-.two #subtitle {
+.two #sub {
   font-size: 2rem;
   margin-bottom: 10px;
 }
