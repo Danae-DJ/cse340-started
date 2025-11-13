@@ -1,0 +1,15 @@
+<!--The Content Heading-->
+<% if (title) { %>
+<h1>
+    <%= title %>
+</h1>
+<% } else { res.redirect('/') } %>
+
+<!--A Message Block //using a comment mark (#), disables this code. 
+you'll replace the comment with the unescaped mark (—), 
+while will allow any messages that have been set to be displayed.-->
+<%# messages() %>
+
+<!--The Inventory Items Display -->
+<%- grid %>
+
