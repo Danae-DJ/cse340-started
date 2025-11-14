@@ -23,34 +23,35 @@ app.set("layout", "./layouts/layout");
 /* ***********************
  * Routes
  *************************/
-app.use(static);
-//Index route
+app.use(require("./routes/static"));
+//Index route - unit 3, activity
 app.get("/", baseController.buildHome);
-// Inventory routes
-app.use("/inv", inventoryRoute);
+// Inventory routes - unit 3, activity
+app.use("/inv", require("./routes/inventoryRoute"));
 
-
-/*option 2(brother Stephenson)
-app.use("/", (req, res) => {
-res.render("index", { title: "Inicio" });
-});*/
-
-
-
+/* ***********************
+* File Not Found Route - must be last route in list
+*Place after all routes
+*unit 3, Basic Error Handling activity
+*************************/
+app.use(async (req, res, next) => {
+  next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
+});
 
 /* ***********************
 * Express Error Handler
 * Place after all other middleware
+*Unit 3, Basic Error handling Activity
 *************************/
 app.use(async (err, req, res, next) => {
-  let nav = await utilities.getNav()
-  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  let nav = await utilities.getNav();
+  console.error(`Error at: "${req.originalUrl}": ${err.message}`);
   res.render("errors/error", {
     title: err.status || 'Server Error',
     message: err.message,
-    nav
-  })
-})
+    nav,
+  });
+});
 
 
 /* ***********************
