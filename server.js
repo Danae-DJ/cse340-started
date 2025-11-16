@@ -26,7 +26,7 @@ app.set("layout", "./layouts/layout");
  *************************/
 app.use(static);
 //Index route - unit 3, activity
-app.get("/", baseController.buildHome);
+app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes - unit 3, activity
 app.use("/inv", inventoryRoute);
 
