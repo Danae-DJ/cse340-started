@@ -12,30 +12,31 @@ const app = express();
 const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
+const utilities = require("./utilities/")
 
 /* ***********************
  * View Engine and Templates"
  *************************/
 app.set("view engine", "ejs");
 app.use(expressLayouts);
-app.set("layout", "./layouts/layout"); 
+app.set("layout", "./layouts/layout");
 
 /* ***********************
  * Routes
  *************************/
-app.use(require("./routes/static"));
+app.use(static);
 //Index route - unit 3, activity
-app.get("/", baseController.buildHome);
+app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes - unit 3, activity
-app.use("/inv", require("./routes/inventoryRoute"));
+app.use("/inv", inventoryRoute);
 
 /* ***********************
-* File Not Found Route - must be last route in list
+* File Not Found Route - must be last route in l ist
 *Place after all routes
 *unit 3, Basic Error Handling activity
 *************************/
 app.use(async (req, res, next) => {
-  next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
+next({ status: 404, message: "Sorry, we appear to have lost that page." });
 });
 
 /* ***********************
@@ -44,14 +45,20 @@ app.use(async (req, res, next) => {
 *Unit 3, Basic Error handling Activity
 *************************/
 app.use(async (err, req, res, next) => {
-  let nav = await utilities.getNav();
-  console.error(`Error at: "${req.originalUrl}": ${err.message}`);
-  res.render("errors/error", {
-    title: err.status || 'Server Error',
-    message: err.message,
-    nav,
-  });
+let nav = await utilities.getNav();
+console.error(`Error at: "${req.originalUrl}": ${err.message}`);
+if (err.status == 404) {
+message = err.message;
+} else {
+message = "Oh no! There was a crash. Maybe try a different route?";
+}
+res.render("errors/error", {
+title: err.status || "Server Error",
+message,
+nav,
 });
+});
+
 
 
 /* ***********************
