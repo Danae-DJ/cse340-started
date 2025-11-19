@@ -1,10 +1,14 @@
-<%- include('../partials/header') %>
+<!--The Content Heading-->
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
 
-    <main>
-        <h1>
-            <%= title %>
-        </h1>
-        <%- pageHTML %>
-    </main>
+        <!--A Message Block //using a comment mark (#), disables this code. 
+you'll replace the comment with the unescaped mark (—), 
+while will allow any messages that have been set to be displayed.-->
+        <%# messages() %>
 
-    <%- include('../partials/footer') %>
+            <!--The Inventory Items Display -->
+            <%- pageHTML %>

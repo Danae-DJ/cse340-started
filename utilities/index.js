@@ -62,30 +62,36 @@ Util.buildClassificationGrid = async function(data){
 * Build the vehicle detail view HTML
 * ************************************ */
 Util.buildDetailView = async function(vehicle) {
-  let price = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD"
-  }).format(vehicle.inv_price)
-
-  //let miles = new Intl.NumberFormat("en-US").format(vehicle.inv_miles)
-
-  let html = `
-  <section id="vehicle-detail">
-    <div class="detail-container">
-      <div class="detail-image">
-        <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
-      </div>
-      <div class="detail-info">
-        <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>
-        <p><strong>Price:</strong> ${price}</p>
-        <p><strong>Mileage:</strong> ${miles} miles</p>
-        <p><strong>Description:</strong> ${vehicle.inv_description}</p>
-        <p><strong>Color:</strong> ${vehicle.inv_color}</p>
-      </div>
-    </div>
-  </section>
-  `
-  return html
+  let svd = "<section id=\"vehicle-display\">";
+  svd += "<div>";
+  svd += "<section class=\"imagePrice\">";
+  svd +=
+    "<img src='" +
+    vehicle.inv_image +
+    "' alt='Image of " +
+    vehicle.inv_make +
+    " " +
+    vehicle.inv_model +
+    " on cse motors' id='mainImage'>";
+  svd += "</section>";
+  svd += "<section class=\"vehicleDetail\">";
+  svd += "<h3> " + vehicle.inv_make + " " + vehicle.inv_model + " Details</h3>";
+  svd += "<ul id=\"vehicle-details\">";
+  svd +=
+    "<li><h4>Price: $" +
+    new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
+    "</h4></li>";
+  svd += "<li><h4>Description:</h4> " + vehicle.inv_description + "</li>";
+  svd += "<li><h4>Color:</h4> " + vehicle.inv_color + "</li>";
+  svd +=
+    "<li><h4>Miles:</h4> " +
+    new Intl.NumberFormat("en-US").format(vehicle.inv_miles) +
+    "</li>";
+  svd += "</ul>";
+  svd += "</section>";
+  svd += "</div>";
+  svd += "</section>";
+  return svd;
 }
 
 /* ****************************************
