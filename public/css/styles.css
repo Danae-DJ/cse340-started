@@ -312,3 +312,97 @@ footer{
     font-size: 1.8rem;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================
+   VEHICLE DETAIL PAGE
+   ================================ */
+
+#vehicle-detail {
+  background-color: var(--color1);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Imagen del vehículo */
+.detail-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Información del vehículo */
+.detail-info h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--color2);
+}
+
+.detail-info p {
+  font-size: 1.2rem;
+  margin: 8px 0;
+  color: var(--color4);
+}
+
+.detail-info strong {
+  color: var(--color3);
+}
+
+/* ================================
+   DISEÑO RESPONSIVO
+   ================================ */
+
+/* Pantallas grandes */
+@media (min-width: 768px) {
+  #vehicle-detail {
+    padding: 30px;
+  }
+
+  .detail-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .detail-image,
+  .detail-info {
+    flex: 1;
+  }
+
+  .detail-info {
+    padding-left: 20px;
+  }
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1200px) {
+  .detail-info h2 {
+    font-size: 2.4rem;
+  }
+
+  .detail-info p {
+    font-size: 1.3rem;
+  }
+}
