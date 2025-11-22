@@ -285,6 +285,19 @@ section {
   background-color: #f5f5f5;
 }
 
+/*Begin account styles*/
+#loginContainer {
+  max-width: 25rem;
+  margin: 0 auto;
+  padding: 1rem .5rem;
+  background-color: var(--main-accent);
+  font-size: larger;
+  border-radius: .5rem;
+}
+
+
+
+
 /* END detail styles */
 
 @media only screen and (min-width: 768px) {
