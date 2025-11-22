@@ -21,4 +21,10 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
  * ************************/
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
+/* ***********************
+ * Deliver login view
+ * Unit 4, delever registration view activity
+ * ************************/
+router.post('/register', utilities.handleErrors(accountController.registerAccount))
+
 module.exports = router
