@@ -1,3 +1,21 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+<% } else { res.redirect('/') } %>
+
+<%- message %>
+
+<% if (error) { %>
+    <ul class="notice">
+    <% error.array().forEach(error=> { %>
+    <li>
+        <%= error.msg %>
+    </li>
+    <% }) %>
+    </ul>
+<% } %>
+
 <h1>Register</h1>
 <div id="registerContainer">
     <p>All fields are required.</p>
