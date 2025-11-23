@@ -329,22 +329,22 @@ label {
   margin-bottom: .75rem;
 }
 
-input:not([type="image" i], [type="range" i], [type="checkbox" i], [type="radio" i]) {
+input:not([type="image"], [type="range"], [type="checkbox"], [type="radio"]) {
   overflow-clip-margin: 0px !important;
   overflow: clip !important;
 }
 
-input[type="text" i] {
+input[type="text"] {
   padding-block: 1px;
   padding-inline: 2px;
 }
 
-input[type="email" i] {
+input[type="email"] {
   padding-block: 1px;
   padding-inline: 2px;
 }
 
-input[type="password" i] {
+input[type="password"] {
   -webkit-text-security: disc !important;
   padding-block: 1px;
   padding-inline: 2px;
@@ -373,6 +373,19 @@ input {
   border-image: initial;
   padding-block: 1px;
   padding-inline: 2px;
+}
+
+input:required:invalid,
+input:focus:invalid {
+  text-decoration-color: var(--primary-text);
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+input:required:valid {
+  text-decoration-color: red; 
+  background-position: right top;
+  background-repeat: no-repeat;
 }
 
 #pswdBtn {
