@@ -44,6 +44,7 @@ app.use(require('connect-flash')())
 app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
+  errors: null
 })
 
 //Unit 4, Process Registration Activity
@@ -68,6 +69,7 @@ app.use("/account", accountRoute);
 *************************/
 app.use(async (req, res, next) => {
 next({ status: 404, message: "Sorry, we appear to have lost that page." });
+errors: null;
 });
 
 /* ***********************
@@ -87,6 +89,7 @@ res.render("errors/error", {
 title: err.status || "Server Error",
 message,
 nav,
+errors: null,
 });
 });
 
