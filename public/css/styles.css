@@ -299,7 +299,7 @@ section {
 /* END account styles*/
 
 /*BEGIN form styles*/
-form {
+form #registerForm, form #loginContainer{
   display: block;
   margin-top: 0em;
   unicode-bidi: isolate;
@@ -399,6 +399,7 @@ input:required:valid {
 }
 
 /*BEGIN register styles*/
+
 #registerContainer {
   max-width: 30rem;
   margin: 0 auto;
