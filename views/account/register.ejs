@@ -4,31 +4,37 @@
     </h1>
 <% } else { res.redirect('/') } %>
 
-<%- message() %>
+<%- messages() %>
 
 <% if (errors) { %>
     <ul class="notice">
-    <% errors.array().forEach(error=> { %>
-        <li> <%= error.msg %> </li>
-<% }) %>
+        <% errors.array().forEach(error=> { %>
+            <li>
+                <%= error.msg %>
+            </li>
+        <% }) %>
     </ul>
 <% } %>
 
-<h1>Register</h1>
 <div id="registerContainer">
     <p>All fields are required.</p>
     <form id="registerForm" action="/account/register" method="post">
         <fieldset>
             <label for="firstname">First name:</label>
-            <input type="text" name="account_firstname" id="firstname" size="10" required value=""><br>
+            <input type="text" name="account_firstname" id="firstname" size="10" required value="">
+
             <label for="lastname">Last name:</label>
-            <input type="text" name="account_lastname" id="lastname" required value=""><br>
+            <input type="text" name="account_lastname" id="lastname" required value="">
+
             <label for="email">Email Address:</label>
-            <input type="email" name="account_email" id="email" required value placeholder="Enter a valid email addres"><br>
+            <input type="email" name="account_email" id="email" required value
+                placeholder="Enter a valid email addres">
+
             <label for="password">Password:</label>
             <input type="password" name="account_password" id="password" required
                 pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
-            <div><span>Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special
+            <div><span>Passwords must be minimum of 12 characters and include 1 capital letter, 1
+                    number and 1 special
                     character.</span></div>
             <div id="pswdBtn">Show Password</div>
             <button type="submit">Register</button>
