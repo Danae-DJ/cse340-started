@@ -46,7 +46,7 @@ invCont.buildByInvId = async function (req, res, next) {
   }
 }
 
-​/* ***************************
+/* ******************************
 *  Build inventory management view
 * ************************** */
 invCont.buildManagementView = async function (req, res, next) {

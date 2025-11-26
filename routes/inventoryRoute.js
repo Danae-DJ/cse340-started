@@ -9,7 +9,7 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 // Route to build inventory detail view
 router.get("/detail/:invId", invController.buildByInvId)
 
-​// Management View Route
-router.get("/", utilities.handleErrors(invController.buildManagementView));
+//Management View Route 
+router.get("/inv", utilities.handleErrors(invController.buildManagementView));
 
 module.exports = router;
