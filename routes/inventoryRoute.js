@@ -17,6 +17,6 @@ router.get("/", invController.buildManagementView);
 router.get("/add-classification", invController.buildAddClassificationView);
 
 //Add Inventory view
-router.get("/add-vehicle", invController.buildAddInventoryView);
+router.get("/add-inventory", invController.buildAddInventoryView);
 
 module.exports = router;
