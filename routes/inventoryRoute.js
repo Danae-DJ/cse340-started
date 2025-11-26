@@ -10,6 +10,6 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 router.get("/detail/:invId", invController.buildByInvId)
 
 //Management View Route 
-router.get("/inv", utilities.handleErrors(invController.buildManagementView));
+router.get("/", utilities.handleErrors(invController.buildManagementView));
 
 module.exports = router;
