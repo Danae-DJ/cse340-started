@@ -398,6 +398,39 @@ input:required:valid {
   border-radius: 20px;
 }
 
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+}
+
+button {
+  appearance: auto;
+  text-rendering: auto;
+  color: buttontext;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  cursor: default;
+  box-sizing: border-box;
+  background-color: buttonface;
+  margin: 0em 0em 0em 0em;
+  padding-block: 1px;
+  padding-inline: 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonborder;
+  border-image: initial;
+}
+
 /*BEGIN register styles*/
 
 #registerContainer {
@@ -419,6 +452,43 @@ input:required:valid {
   margin-top: 1rem;
 }
 /* END register styles*/
+
+/*BEGIN add-inventory//add-classification styles*/
+#wrapper {
+  width: 95%;
+  background-color: var(--primary-background);
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 1em;
+}
+
+select:not(:-internal-list-box) {
+  text-shadow: -internal-auto-base(none, inherit);
+  text-transform: -internal-auto-base(none, initial);
+  text-rendering: -internal-auto-base(auto, inherit);
+  letter-spacing: -internal-auto-base(normal, inherit);
+  word-spacing: -internal-auto-base(normal, inherit);
+  text-align: -internal-auto-base(start, initial);
+  text-indent: -internal-auto-base(0px, initial);
+  -webkit-rtl-ordering: -internal-auto-base(logical, inherit);
+  cursor: -internal-auto-base(default, inherit);
+  color: -internal-auto-base(FieldText, inherit);
+  background-color: -internal-auto-base(Field, transparent);
+  min-inline-size: -internal-auto-base(auto, calc-size(auto, max(size, 24px)));
+  min-block-size: -internal-auto-base(auto, calc-size(auto, max(size, 24px, 1lh)));
+  align-items: -internal-auto-base(center, unset);
+  user-select: -internal-auto-base(auto, none);
+  overflow: visible !important;
+  font: -internal-auto-base(-webkit-small-control, inherit);
+  white-space: -internal-auto-base(pre, inherit);
+  border: 1px solid -internal-auto-base(light-dark(#767676, #858585), currentColor);
+  padding-block: -internal-auto-base(0, 0.25em);
+  padding-inline: -internal-auto-base(0, 0.5em);
+  gap: -internal-auto-base(initial, 0.5em);
+  border-radius: -internal-auto-base(0, 0.5em);
+}
+
+/* END add-inventory//add-classification styles*/
 
 @media only screen and (min-width: 768px) {
   body {

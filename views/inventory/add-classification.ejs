@@ -1,0 +1,31 @@
+​<% if (title) {%>
+    <h1>
+        <%= title %>
+    </h1>
+<%} else {res.redirect('/')} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+<ul class="message warning">
+    <% errors.array().forEach(error=> { %>
+    <li>
+        <%= error.msg %>
+    </li>
+    <% }) %>
+</ul>
+<% } %>
+
+<h1>Add New Classification</h1>
+<div id="registerContainer">
+    <p>Field is required.</p>
+    <form class="formSpread" action="/inv/add-classification" method="post">
+        <fieldset>
+            <label for="carClassification">Classification Name</label>
+            <p>Name must be alphabetic characters only.</p>
+            <input type="text" name="classification_name" id="carClassification" required="" pattern="[a-zA-Z]*"
+                value="">
+            <button type="submit">Add Classification</button>
+        </fieldset>
+    </form>
+</div>
