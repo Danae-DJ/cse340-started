@@ -58,4 +58,29 @@ res.status(201).render("inventory/management", {
   });
 };
 
+/* ******************************
+*  Build inventory Add Classification view
+* ************************** */
+invCont.buildAddClassificationView = async function (req, res, next) {
+let nav = await utilities.getNav();
+res.status(201).render("inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+    errors: null,
+  });
+};
+
+/* ******************************
+*  Build inventory Add Inventory view
+* ************************** */
+invCont.buildAddInventoryView = async function (req, res, next) {
+let nav = await utilities.getNav();
+res.status(201).render("inventory/add-inventory", {
+    title: "Add New Inventory",
+    nav,
+    errors: null,
+  });
+};
+
+
 module.exports = invCont
