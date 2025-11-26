@@ -64,7 +64,7 @@ res.status(201).render("inventory/management", {
 invCont.buildAddClassificationView = async function (req, res, next) {
 let nav = await utilities.getNav();
 res.status(201).render("inventory/add-classification", {
-    title: "Add New Classification",
+    title: "Classification",
     nav,
     errors: null,
   });
@@ -76,7 +76,7 @@ res.status(201).render("inventory/add-classification", {
 invCont.buildAddInventoryView = async function (req, res, next) {
 let nav = await utilities.getNav();
 res.status(201).render("inventory/add-inventory", {
-    title: "Add New Inventory",
+    title: "Inventory",
     nav,
     errors: null,
   });
