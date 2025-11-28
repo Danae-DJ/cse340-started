@@ -17,6 +17,7 @@ const session = require("express-session")
 const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * View Engine and Templates"
@@ -50,6 +51,12 @@ app.use(function(req, res, next){
 //Unit 4, Process Registration Activity
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+//Unit 5, Login Process Activity: cookie-parser
+app.use(cookieParser())
+
+//Unit 5, Login Process Activity
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * Routes

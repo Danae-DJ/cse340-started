@@ -32,4 +32,16 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 )
 
+/* ***********************
+ * Process Login
+ * Unit 4, Stickness Activity
+ * Modified in Unit 5; Login Process Activity
+ * ************************/
+router.post(
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
+)
+
 module.exports = router
