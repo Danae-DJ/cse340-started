@@ -22,6 +22,11 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 /* ***********************
+ * Unit 5, Account Management View
+ * ************************/
+router.get("/account-management", utilities.handleErrors(accountController.accountLogin))
+
+/* ***********************
  * Deliver login view
  * Unit 4, Process the registration data
  * ************************/
@@ -41,6 +46,17 @@ router.post(
   "/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
+)
+
+/* ***********************
+ * Deliver login view
+ * Unit 4, Process the registration data
+ * ************************/
+router.post(
+  "/account-management",
+  regValidate.registationRules(),
+  regValidate.checkRegData,
   utilities.handleErrors(accountController.accountLogin)
 )
 

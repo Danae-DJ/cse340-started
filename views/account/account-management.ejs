@@ -1,0 +1,25 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+<% } else { res.redirect('/') } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error=> { %>
+    <li>
+        <%= error.msg %>
+    </li>
+    <% }) %>
+</ul>
+<% } %>
+
+<h1>Wellcome New</h1>
+
+<h2>You're logged in</h2>
+
+<ul class="boldList">
+    <li><a href="" title="Click to edit account information">Edit Account Information</a></li>
+</ul>
