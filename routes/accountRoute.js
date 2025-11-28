@@ -50,12 +50,11 @@ router.post(
 )
 
 /* ***********************
- * Deliver login view
- * Unit 4, Process the registration data
+ * Unit 5, Account management view
  * ************************/
 router.post(
   "/account-management",
-  regValidate.registationRules(),
+  regValidate.loginRules(),
   regValidate.checkRegData,
   utilities.handleErrors(accountController.accountLogin)
 )
