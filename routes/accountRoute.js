@@ -52,11 +52,10 @@ router.post(
 /* ***********************
  * Unit 5, Account management view
  * ************************/
-router.post(
-  "/account-management",
-  regValidate.loginRules(),
-  regValidate.checkRegData,
-  utilities.handleErrors(accountController.accountLogin)
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildManagement)
 )
 
 module.exports = router
