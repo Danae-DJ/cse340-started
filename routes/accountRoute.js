@@ -53,7 +53,7 @@ router.post(
  * Unit 5, Account management view
  * ************************/
 router.get(
-  "/",
+  "/account-management",
   utilities.checkLogin,
   utilities.handleErrors(accountController.buildManagement)
 )
