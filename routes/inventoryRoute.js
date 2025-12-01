@@ -3,7 +3,6 @@ const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
 const utilities = require("../utilities");//management view route
-const inventory = require("/inv/getInventory/:classification_id")//Inventory Items route
 const edit = require("../controllers/invController"); //Edit inventory items
 const update = require("../controllers/invController")//pdate view: inventory route 
 
