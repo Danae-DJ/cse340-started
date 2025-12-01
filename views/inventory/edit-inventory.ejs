@@ -19,27 +19,22 @@
 <h1>Editing Inventory</h1>
 <div id="registerContainer">
     <p>All fields are required.</p>
-    <form action="/inv/update" method="post">
+    <form action="/inv/update" method="post" id="updateform">
         <fieldset>
             <label for="classificationList">Classification</label>
-            <select name="classification_id" id="classificationList" required="">
-                <option value="">Choose a Classification</option>
-                <option value="1">Custom</option>
-                <option value="5">Sedan</option>
-                <option value="2">Sport</option>
-                <option value="3">SUV</option>
-                <option value="4">Truck</option>
-            </select><br>
+            <%- classificationSelect %>
 
             <label for="invMake">Make</label>
-            <input type="text" name="inv_make" id="invMake" required="" minlength="3" placeholder="Min of 3 characters">
+            <input type="text" name="inv_make" id="invMake" required minlength="3" placeholder="Min of 3 characters" 
+            <% if(locals.inv_make) { %> value="<%= locals.inv_make %>"<% } %> >
             <br>
             <label for="invModel">Model</label>
-            <input type="text" name="inv_model" id="invModel" required="" minlength="3"
-                placeholder="Min of 3 characters">
+            <input type="text" name="inv_model" id="invModel" required minlength="3" placeholder="Min of 3 characters"
+            <% if(locals.inv_model) { %> value="<%= locals.inv_model %>"<% } %>>
             <br>
             <label for="invDescription">Description</label>
-            <textarea id="invDescription" name="inv_description" required=""></textarea>
+            <textarea id="invDescription" name="inv_description" required=""
+            <% if(locals.inv_description) { %> value="<%= locals.inv_description %>"<% } %>></textarea>
             <br>
             <label for="invImage">Image Path</label>
             <input type="text" name="inv_image" id="invImage" size="30" required=""
@@ -50,21 +45,26 @@
                 value="/images/vehicles/no-image-tn.png">
             <br>
             <label for="invPrice">Price</label>
-            <input type="text" name="inv_price" id="invPrice" size="10" placeholder="decimal or integer numbers only"
-                required="" pattern="^[1-9]\d*(\.\d+)?$">
+            <input type="text" name="inv_price" id="invPrice" size="10" placeholder="decimal or integer numbers only" required pattern="^[1-9]\d*(\.\d+)?$"
+            <% if(locals.inv_price) { %> value="<%= locals.inv_price %>"<% } %> >
             <br>
             <label for="invYear">Year</label>
-            <input type="text" name="inv_year" id="invYear" size="10" placeholder="4-digit year" required=""
-                minlength="4" maxlength="4" pattern="^(19|20)\d{2}$">
+            <input type="text" name="inv_year" id="invYear" size="10" placeholder="4-digit year" required minlength="4" maxlength="4" pattern="^(19|20)\d{2}$"
+            <% if(locals.inv_year) { %> value="<%= locals.inv_year %>"<% } %> >
             <br>
             <label for="invMiles">Miles</label>
-            <input type="text" name="inv_miles" id="invMiles" size="10" placeholder="digits only" required=""
-                pattern="^\d+$">
+            <input type="text" name="inv_miles" id="invMiles" size="10" placeholder="digits only" required pattern="^\d+$"
+            <% if(locals.inv_miles) { %> value="<%= locals.inv_miles %>"<% } %> >
             <br>
             <label for="invColor">Color</label>
-            <input type="text" name="inv_color" id="invColor" required="">
+            <input type="text" name="inv_color" id="invColor" required
+            <% if(locals.inv_color) { %> value="<%= locals.inv_color %>"<% } %>>
             <br>
-            <button type="submit">Update Vehicle</button>
+            
+            <input type="hidden" name="inv_id"
+            <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"<% } %> >
+            
+            <button disabled type="submit">Update Vehicle</button>
         </fieldset>
     </form>
 </div>
