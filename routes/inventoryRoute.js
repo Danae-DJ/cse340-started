@@ -26,9 +26,15 @@ router.get("/add-inventory", invController.buildAddInventoryView);
 router.get("/getInventory/:classification_id", invController.getInventoryJSON);
 
 //Edit inventory items
-router.get("/edit-inventory", invController.editInventoryView);
+router.get("/edit/:inv_id", invController.editInventoryView);
 
-//Update view: inventory route
-router.post("/update/", invController.updateInventory)
+//Route to Edit inventory items: Update
+router.post( "/edit-inventory/", invController.updateInventory)
+
+//Delete inventory items
+router.get("/delete/:inv_id", invController.deleteView);
+
+//Route to Delete inventory items
+router.post("/delete", invController.deleteItem)
 
 module.exports = router;
