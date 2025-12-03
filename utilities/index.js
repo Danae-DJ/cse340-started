@@ -2,6 +2,7 @@ const invModel = require("../models/inventory-model")
 const Util = {}
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
+const utilities = require("../utilities/")
 
 /* ************************
  * Constructs the nav HTML unordered list
