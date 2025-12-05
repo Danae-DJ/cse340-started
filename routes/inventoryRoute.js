@@ -43,7 +43,7 @@ router.get("/getInventory/:classification_id", invController.getInventoryJSON);
 router.get("/edit/:inv_id", invController.editInventoryView);
 
 //Route to Edit inventory items: Update
-router.post("/edit-inventory/", invController.updateInventory);
+router.post("/update/", invController.updateInventory);
 
 //Delete inventory items
 router.get("/delete/:inv_id", invController.deleteView);

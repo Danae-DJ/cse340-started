@@ -33,8 +33,8 @@
             <% if(locals.inv_model) { %> value="<%= locals.inv_model %>"<% } %>>
             <br>
             <label for="invDescription">Description</label>
-            <textarea id="invDescription" name="inv_description" required=""
-            <% if(locals.inv_description) { %> value="<%= locals.inv_description %>"<% } %>></textarea>
+            <textarea id="invDescription" name="inv_description" required>
+            <% if(locals.inv_description) { %><%= locals.inv_description %><% } %></textarea>
             <br>
             <label for="invImage">Image Path</label>
             <input type="text" name="inv_image" id="invImage" size="30" required=""
@@ -68,3 +68,5 @@
         </fieldset>
     </form>
 </div>
+
+<script src="/js/inv-update.js"></script>
