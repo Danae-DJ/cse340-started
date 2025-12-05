@@ -16,22 +16,22 @@
 </ul>
 <% } %>
 
-<h1>Editing Inventory</h1>
+<h1>Delete Inventory</h1>
 <div id="registerContainer">
     <p>Confirm Deletion - The delete is permanent.</p>
     <form action="/inv/delete" method="post" id="deleteForm">
         <fieldset>
             <label for="invMake">Make</label>
-            <input type="text" readonly <% if(locals.inv_make) { %> value="<%= locals.inv_make %>"<% } %> >
+            <input type="text" readonly value="<%= locals.inv_make ? inv_make : '' %>" >
             <br>
             <label for="invModel">Model</label>
-            <input type="text" readonly <% if(locals.inv_model) { %> value="<%= locals.inv_model %>"<% } %>>
+            <input type="text" readonly value="<%= locals.inv_model ? inv_model : '' %>" >
             <br>
             <label for="invPrice">Price</label>
-            <input type="text" readonly <% if(locals.inv_price) { %> value="<%= locals.inv_price %>"<% } %> >
+            <input type="text" readonly value="<%= locals.inv_price ? inv_price : '' %>" >
             <br>
             <label for="invYear">Year</label>
-            <input type="text" readonly <% if(locals.inv_year) { %> value="<%= locals.inv_year %>"<% } %> >
+            <input type="text" readonly value="<%= locals.inv_year ? inv_year : '' %>" >
             <br>
             
             <input type="hidden" name="inv_id"
@@ -41,3 +41,5 @@
         </fieldset>
     </form>
 </div>
+
+<script src="/js/inv-update.js"></script>
