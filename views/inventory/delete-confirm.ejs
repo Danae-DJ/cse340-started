@@ -1,43 +1,43 @@
-​<% if (title) {%>
-    <h1>
-        <%= title %>
-    </h1>
-<%} else {res.redirect('/')} %>
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else { res.redirect("/") } %>
 
 <%- messages() %>
 
 <% if (errors) { %>
-<ul class="message warning">
-    <% errors.array().forEach(error=> { %>
-    <li>
-        <%= error.msg %>
-    </li>
+  <ul class="message warning">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
     <% }) %>
-</ul>
+  </ul>
 <% } %>
 
-<h1>Delete Inventory</h1>
 <div id="registerContainer">
-    <p>Confirm Deletion - The delete is permanent.</p>
-    <form action="/inv/delete" method="post" id="deleteForm">
-        <fieldset>
-            <label for="invMake">Make</label>
-            <input type="text" readonly value="<%= locals.inv_make ? inv_make : '' %>" >
-            <br>
-            <label for="invModel">Model</label>
-            <input type="text" readonly value="<%= locals.inv_model ? inv_model : '' %>" >
-            <br>
-            <label for="invPrice">Price</label>
-            <input type="text" readonly value="<%= locals.inv_price ? inv_price : '' %>" >
-            <br>
-            <label for="invYear">Year</label>
-            <input type="text" readonly value="<%= locals.inv_year ? inv_year : '' %>" >
-            <br>
-            
-            <input type="hidden" name="inv_id"
-            <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"<% } %> >
-            
-            <button type="submit">Delete Vehicle</button>
-        </fieldset>
-    </form>
+  <p><strong>Confirm Deletion:</strong> The delete is permanent.</p>
+
+  <form action="/inv/delete" method="post" id="deleteForm">
+    <fieldset>
+
+      <label for="invMake">Make</label>
+      <input type="text" readonly value="<%= inv_make %>">
+      <br>
+
+      <label for="invModel">Model</label>
+      <input type="text" readonly value="<%= inv_model %>">
+      <br>
+
+      <label for="invPrice">Price</label>
+      <input type="text" readonly value="<%= inv_price %>">
+      <br>
+
+      <label for="invYear">Year</label>
+      <input type="text" readonly value="<%= inv_year %>">
+      <br>
+
+      <input type="hidden" name="inv_id" value="<%= inv_id %>">
+
+      <button type="submit">Delete Vehicle</button>
+
+    </fieldset>
+  </form>
 </div>

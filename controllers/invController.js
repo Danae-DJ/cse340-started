@@ -12,7 +12,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
   const grid = await utilities.buildClassificationGrid(data);
   let nav = await utilities.getNav();
   const className = data[0].classification_name;
-  res.render("./inventory/classification", {
+  res.render("./inventory/add-classification", {
     title: className + " vehicles",
     nav,
     grid,
@@ -155,7 +155,7 @@ invCont.addInventory = async function (req, res, next) {
     });
   } else {
     req.flash("message warning", "Sorry, the insert failed.");
-    res.status(501).render("inventory/add-vehicel", {
+    res.status(501).render("inventory/add-inventory", {
       title: "Add New Inventory",
       nav,
       classificationSelect: classificationSelect,

@@ -142,9 +142,11 @@ async function deleteInventoryItem(inv_id) {
   try {
     const sql = "DELETE FROM inventory WHERE inv_id = $1";
     const data = await pool.query(sql, [inv_id]);
-    return data;
+    return data.rowCount; //returns the number of rows affected
   } catch (error) {
-    new Error("Delete Inventory Error");
+    console.error("Delete Inventory Error" + error); //similar that other functions
+    return null // explicitly state "not found",
+    //original: new Error("Delete Inventory Error");
   }
 }
 

@@ -81,7 +81,7 @@ router.post(
  * Unit 5, Deliver Update Account View
  * ************************/
 router.get(
-  "/update",
+  "/update-view",
   utilities.checkLogin,
   utilities.handleErrors(accountController.buildUpdateView)
 )

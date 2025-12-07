@@ -45,7 +45,7 @@ async function getAccountByEmail (account_email) {
 }
 
 /* *****************************
-* Get account by ID//DON'T TOUCH
+* Get account by ID//DON'T TOUCH (addded type)
 I CAN WATCH YOU!!! DON'T TOUCH!!!
 * ***************************** */
 async function getAccountById(account_id) {

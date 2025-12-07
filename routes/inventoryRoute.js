@@ -15,22 +15,32 @@ router.get("/detail/:invId", invController.buildByInvId);
 router.get("/", invController.buildManagementView);
 
 //Add Classification view
-router.get("/add-classification", invController.buildAddClassificationView);
+router.get(
+  "/add-classification",
+  utilities.checkAdminEmployee,
+  invController.buildAddClassificationView
+);
 
 // Process addClassification Route
 router.post(
   "/add-classification",
+  utilities.checkAdminEmployee,
   inventoryValidation.classificationRule(),
   inventoryValidation.checkClassificationData,
   utilities.handleErrors(invController.addClassification)
 );
 
 //Add Inventory view
-router.get("/add-inventory", invController.buildAddInventoryView);
+router.get(
+  "/add-inventory",
+  utilities.checkAdminEmployee,
+  invController.buildAddInventoryView
+);
 
 // Process add-inventory Route
 router.post(
   "/add-inventory",
+  utilities.checkAdminEmployee,
   inventoryValidation.newInventoryRules(),
   inventoryValidation.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
@@ -40,15 +50,31 @@ router.post(
 router.get("/getInventory/:classification_id", invController.getInventoryJSON);
 
 //Edit inventory items
-router.get("/edit/:inv_id", invController.editInventoryView);
+router.get(
+  "/edit/:inv_id",
+  utilities.checkAdminEmployee,
+  invController.editInventoryView
+);
 
 //Route to Edit inventory items: Update
-router.post("/update/", invController.updateInventory);
+router.post(
+  "/update",
+  utilities.checkAdminEmployee,
+  invController.updateInventory
+);
 
 //Delete inventory items
-router.get("/delete/:inv_id", invController.deleteView);
+router.get(
+  "/delete/:inv_id",
+  utilities.checkAdminEmployee,
+  invController.deleteView
+);
 
 //Route to Delete inventory items
-router.post("/delete", invController.deleteItem);
+router.post(
+  "/delete",
+  utilities.checkAdminEmployee,
+  invController.deleteItem
+);
 
 module.exports = router;
