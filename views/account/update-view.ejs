@@ -15,7 +15,7 @@
     <% }) %>
 </ul>
 <h2% } %>
-<!--update.ejs//account-update.ejs --- route//name 
+<!--update.ejs//update-view.ejs --- route//name 
 DONT TOUCH(WORKING)-->
 <div id="registerContainer">
     <h2>Update account information</h2>
@@ -32,7 +32,14 @@ DONT TOUCH(WORKING)-->
         
             <label for="email">Email Address:</label>
             <input type="email" name="account_email" id="email" required value="<%= locals.accountData.account_email %>">
-        
+            
+            <label for="classificationList">Choose your type of account:</label>
+            <select id="classificationList" name="account_type" required>
+                <option value="Client" <%=locals.accountData.account_type==="Client" ? "selected" : "" %>>Client</option>
+                <option value="Employee" <%=locals.accountData.account_type==="Employee" ? "selected" : "" %>>Employee</option>
+                <option value="Manager" <%=locals.accountData.account_type==="Manager" ? "selected" : "" %>>Admin</option>
+            </select>
+
             <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
         
             <button type="submit">Update Account</button>

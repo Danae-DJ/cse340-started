@@ -42,7 +42,8 @@ async function registerAccount(req, res) {
     account_firstname,
     account_lastname,
     account_email,
-    account_password
+    account_password,
+    account_type,
   } = req.body;
 
   // Hash the password before storing
@@ -63,6 +64,7 @@ async function registerAccount(req, res) {
     account_firstname,
     account_lastname,
     account_email,
+    account_type,
     hashedPassword
   );
 
@@ -118,7 +120,7 @@ async function accountLogin(req, res) {
       return res.redirect("/account/")
     }
     else {
-      req.flash("message notice", "Please check your credentials and try again.")
+      req.flash("notice", "Please check your credentials and try again.")
       res.status(400).render("account/login", {
         title: "Login",
         nav,
@@ -151,4 +153,80 @@ function accountLogout(req, res) {
   res.redirect("/")
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, accountLogout }
+/* ****************************************
+*  Process Account Update
+* *************************************** */
+async function updateAccount(req, res) {
+  let nav = await utilities.getNav()
+  const {
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email,
+    account_type
+  } = req.body
+
+  // Only ADMINS can changes account_type!!!
+  const loggedInUser = res.locals.accountData
+
+  let finalAccountType = loggedInUser.account_type === "Admin"
+    ? account_type   // Admin can change it
+    : loggedInUser.account_type // Client can't changes
+
+  const updateResult = await accountModel.updateAccount(
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email,
+    finalAccountType
+  )
+
+  if (updateResult) {
+    req.flash("notice", "Account updated successfully.")
+
+    // check the updated data again.
+    const updatedAccount = await accountModel.getAccountById(account_id)
+
+    res.render("account/account-management", {
+      title: "Account Management",
+      nav,
+      errors: null,
+      accountData: updatedAccount
+    })
+  } else {
+    req.flash("notice", "Update failed.")
+    res.render("account/update-view", {
+      title: "Update Account",
+      nav,
+      errors: null,
+      accountData: req.body
+    })
+  }
+}
+
+
+/* ****************************************
+*  Deliver Update Account View
+* *************************************** */
+async function buildUpdateView(req, res) {
+  let nav = await utilities.getNav()
+  const accountData = res.locals.accountData
+
+  res.render("account/update-view", {
+    title: "Update Account",
+    nav,
+    errors: null,
+    accountData
+  })
+}
+
+module.exports = {
+  buildLogin,
+  buildRegister,
+  registerAccount,
+  accountLogin,
+  buildManagement,
+  accountLogout,
+  updateAccount,
+  buildUpdateView
+}

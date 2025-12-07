@@ -23,13 +23,13 @@
 
 <!-- introduction everyone -->
 <p>
-    <a href="/account/update/<%= locals.accountData.account_id %>" title="Click to update account information">
+    <a href="/account/update" title="Click to update account information">
         Update Account Information
     </a>
 </p>
 
 <!-- Only for: EMPLOYEE/ ADMIN: inventary view -->
-<% if (locals.accountData.account_lastname==="Employee" || locals.accountData.account_lastname==="Admin" ) { %>
+<% if (locals.accountData.account_type==="Employee" || locals.accountData.account_type==="Admin" ) { %>
 
     <h3>Inventory Management</h3>
 

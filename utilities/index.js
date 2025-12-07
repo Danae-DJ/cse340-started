@@ -158,6 +158,38 @@ Util.checkJWTToken = (req, res, next) => {
     req.flash("notice", "Please log in.")
     return res.redirect("/account/login")
   }
- }
+}
+ 
+/* ****************************************
+ *  Check Admin Access// so confusing DON'T TOUCH!!!
+ * ************************************ */
+Util.checkAdmin = (req, res, next) => {
+  if (
+    res.locals.loggedin &&
+    res.locals.accountData.account_type === "Admin"
+  ) {
+    next()
+  } else {
+    req.flash("notice", "Admin access required.")
+    return res.redirect("/account/")
+  }
+}
+
+/* ****************************************
+ *  Check Employee or Admin Access// so confusing DON'T TOUCH!!!
+ * ************************************ */
+Util.checkEmployeeOrAdmin = (req, res, next) => {
+  if (
+    res.locals.loggedin &&
+    (res.locals.accountData.account_type === "Admin" ||
+     res.locals.accountData.account_type === "Employee")
+  ) {
+    next()
+  } else {
+    req.flash("notice", "Employee or Admin access required.")
+    return res.redirect("/account/")
+  }
+}
+
 
 module.exports = Util

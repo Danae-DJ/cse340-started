@@ -36,6 +36,15 @@
             <div><span>Passwords must be minimum of 12 characters and include 1 capital letter, 1
                     number and 1 special
                     character.</span></div>
+
+            <label for="account_type">Chose your type of account:</label>
+            <select id="account_type" name="account_type" required>
+                <option value="Client" <%=locals.account_type==="Client" ? "selected" : "" %>>Client</option>
+                <option value="Employee" <%=locals.account_type==="Employee" ? "selected" : "" %>>Employee</option>
+                <option value="Admin" <%=locals.account_type==="Admin" ? "selected" : "" %>>Admin</option>
+            </select>
+
+                
             <div id="pswdBtn">Show Password</div>
             <button type="submit">Register</button>
         </fieldset>

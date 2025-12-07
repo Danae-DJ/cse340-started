@@ -66,4 +66,35 @@ router.get(
 "/logout", 
 utilities.handleErrors(accountController.accountLogout))
 
+/* ***********************
+ * Process Account
+ * Unit 5,  Update Account
+ * ************************/
+router.post(
+  "/update",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.updateAccount)
+)
+
+/* ***********************
+ * Process Account
+ * Unit 5, Deliver Update Account View
+ * ************************/
+router.get(
+  "/update",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildUpdateView)
+)
+
+/* ***********************
+ * Process Account (this is confuses... DONT TOUCH!!!)
+ * Unit 5, ONLY ADMIN CAN CHANGE ROLES
+ * ************************/
+router.post(
+  "/update-account-type",
+  utilities.checkLogin,
+  utilities.checkAdmin,
+  utilities.handleErrors(accountController.updateAccountType)
+)
+
 module.exports = router
