@@ -47,7 +47,7 @@ body {
 #tools {
   font-size: 3.5vw;
   font-variant: small-caps;
-  display: flex;
+  display: flex-wrap; /*flex;*/
   width: 20%;
   justify-content: space-evenly;
 }

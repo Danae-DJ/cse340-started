@@ -145,10 +145,10 @@ async function buildManagement(req, res, next) {
 
 /* ****************************************
 *  Process Logout
-* *************************************** 
+* *************************************** */
 function accountLogout(req, res) {
   res.clearCookie("jwt")
   res.redirect("/")
-}*/
+}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, /*ccountLogout*/ }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, accountLogout }

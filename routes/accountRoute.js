@@ -61,9 +61,9 @@ router.get(
 /* ***********************
  * Logout Route
  * Unit 5, Logout Process
- * ************************
+ * ************************/ 
 router.get(
 "/logout", 
-utilities.handleErrors(accountController.accountLogout))*/
+utilities.handleErrors(accountController.accountLogout))
 
 module.exports = router

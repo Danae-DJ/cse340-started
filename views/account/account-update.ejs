@@ -1,0 +1,63 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+<% } else { res.redirect('/') } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error=> { %>
+    <li>
+        <%= error.msg %>
+    </li>
+    <% }) %>
+</ul>
+<h2% } %>
+<!--update.ejs//account-update.ejs --- route//name 
+DONT TOUCH(WORKING)-->
+<div id="registerContainer">
+    <h2>Update account information</h2>
+    <form id="registerForm" action="/account/update" method="post">
+        <fieldset>
+        
+            <label for="firstname">First name:</label>
+            <input type="text" name="account_firstname" id="firstname" required
+                value="<%= locals.accountData.account_firstname %>">
+        
+            <label for="lastname">Last name:</label>
+            <input type="text" name="account_lastname" id="lastname" required
+                value="<%= locals.accountData.account_lastname %>">
+        
+            <label for="email">Email Address:</label>
+            <input type="email" name="account_email" id="email" required value="<%= locals.accountData.account_email %>">
+        
+            <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
+        
+            <button type="submit">Update Account</button>
+        
+        </fieldset>
+    </form>
+
+    <h2>Change Password</h2>
+    <form id="registerForm" action="/account/update-password" method="post">
+        <fieldset>
+        
+            <label for="account_password">New Password:</label>
+            <input type="password" name="account_password" id="account_password" required
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+        
+            <p>
+                Passwords must be at least 12 characters and include:
+                one uppercase letter, one number, and one special character.
+            </p>
+        
+            <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
+        
+            <button type="submit">Change Password</button>
+        
+        </fieldset>
+    </form>
+
+</div>

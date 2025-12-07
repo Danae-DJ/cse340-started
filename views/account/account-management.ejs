@@ -16,10 +16,36 @@
 </ul>
 <% } %>
 
-<h1>Wellcome New</h1>
+<!-- wellcome for everyone -->
+<h2>
+    Welcome&nbsp; <%= locals.accountData.account_firstname %>
+</h2>
 
-<h2>You're logged in</h2>
+<!-- introduction everyone -->
+<p>
+    <a href="/account/update/<%= locals.accountData.account_id %>" title="Click to update account information">
+        Update Account Information
+    </a>
+</p>
 
-<ul class="boldList">
-    <li><a href="" title="Click to edit account information">Edit Account Information</a></li>
+<!-- Only for: EMPLOYEE/ ADMIN: inventary view -->
+<% if (locals.accountData.account_lastname==="Employee" || locals.accountData.account_lastname==="Admin" ) { %>
+
+    <h3>Inventory Management</h3>
+
+    <p>
+        <a href="/inv/" title="Click to manage inventory">
+            Manage Inventory
+        </a>
+    </p>
+
+<% } %>
+
+<!-- 
+<h1>Wellcome New</h1> 
+<h2>You're logged in</h2> 
+<ul class="boldList"> 
+    <li><a href="" title="Click to edit account information">Edit Account Information</a>
+    </li> 
 </ul>
+-->
