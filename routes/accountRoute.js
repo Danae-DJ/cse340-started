@@ -23,8 +23,8 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 /* ***********************
  * Unit 5, Account Management View
- * ************************/
-router.get("/account-management", utilities.handleErrors(accountController.accountLogin))
+ * ************************
+router.get("/account-management", utilities.handleErrors(accountController.accountLogin))*/
 
 /* ***********************
  * Deliver login view
@@ -71,7 +71,7 @@ utilities.handleErrors(accountController.accountLogout))
  * Unit 5,  Update Account
  * ************************/
 router.post(
-  "/update",
+  "/update-view",
   utilities.checkLogin,
   utilities.handleErrors(accountController.updateAccount)
 )

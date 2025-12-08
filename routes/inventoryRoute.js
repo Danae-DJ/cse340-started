@@ -12,7 +12,11 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 router.get("/detail/:invId", invController.buildByInvId);
 
 //Management View Route 
-router.get("/", invController.buildManagementView);
+router.get(
+  "/",
+  utilities.checkAdminEmployee,
+  invController.buildManagementView
+);
 
 //Add Classification view
 router.get(

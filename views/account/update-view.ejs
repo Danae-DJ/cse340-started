@@ -1,25 +1,21 @@
 <% if (title) { %>
-    <h1>
-        <%= title %>
-    </h1>
+    <h1><%= title %></h1>
 <% } else { res.redirect('/') } %>
 
 <%- messages() %>
 
 <% if (errors) { %>
 <ul class="notice">
-    <% errors.array().forEach(error=> { %>
-    <li>
-        <%= error.msg %>
-    </li>
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
     <% }) %>
 </ul>
-<h2% } %>
+<% } %>
 <!--update.ejs//update-view.ejs --- route//name 
 DONT TOUCH(WORKING)-->
 <div id="registerContainer">
     <h2>Update account information</h2>
-    <form id="registerForm" action="/account/update" method="post">
+    <form id="registerForm" action="/account/update-view" method="post">
         <fieldset>
         
             <label for="firstname">First name:</label>
@@ -37,7 +33,7 @@ DONT TOUCH(WORKING)-->
             <select id="classificationList" name="account_type" required>
                 <option value="Client" <%=locals.accountData.account_type==="Client" ? "selected" : "" %>>Client</option>
                 <option value="Employee" <%=locals.accountData.account_type==="Employee" ? "selected" : "" %>>Employee</option>
-                <option value="Manager" <%=locals.accountData.account_type==="Manager" ? "selected" : "" %>>Admin</option>
+                <option value="Admin" <%=locals.accountData.account_type==="Admin" ? "selected" : "" %>>Admin</option>
             </select>
 
             <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
