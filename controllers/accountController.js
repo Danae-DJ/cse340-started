@@ -220,6 +220,56 @@ async function buildUpdateView(req, res) {
   })
 }
 
+/* ****************************************
+*  Process Account: Update Password
+* *************************************** */
+async function updatePassword(req, res) {
+  let nav = await utilities.getNav()
+  const { account_id, account_password } = req.body
+
+  // 1. Hash password
+  let hashedPassword
+  try {
+    hashedPassword = await bcrypt.hash(account_password, 10)
+  } catch (error) {
+    req.flash("notice", "Error hashing password.")
+    return res.status(500).render("account/update-view", {
+      title: "Update Account",
+      nav,
+      errors: null,
+      accountData: res.locals.accountData,
+    })
+  }
+
+  // 2. Call real password update function
+  const updateResult = await accountModel.updatePassword(
+    account_id,
+    hashedPassword
+  )
+
+  if (updateResult) {
+    req.flash("notice", "Password updated successfully.")
+
+    const updatedAccount = await accountModel.getAccountById(account_id)
+
+    return res.render("account/account-management", {
+      title: "Account Management",
+      nav,
+      errors: null,
+      accountData: updatedAccount
+    })
+  } else {
+    req.flash("notice", "Password update failed.")
+    return res.render("account/update-view", {
+      title: "Update Account",
+      nav,
+      errors: null,
+      accountData: res.locals.accountData
+    })
+  }
+}
+
+
 module.exports = {
   buildLogin,
   buildRegister,
@@ -228,5 +278,6 @@ module.exports = {
   buildManagement,
   accountLogout,
   updateAccount,
-  buildUpdateView
+  buildUpdateView,
+  updatePassword,
 }

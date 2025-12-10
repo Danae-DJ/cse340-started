@@ -68,16 +68,6 @@ utilities.handleErrors(accountController.accountLogout))
 
 /* ***********************
  * Process Account
- * Unit 5,  Update Account
- * ************************/
-router.post(
-  "/update-view",
-  utilities.checkLogin,
-  utilities.handleErrors(accountController.updateAccount)
-)
-
-/* ***********************
- * Process Account
  * Unit 5, Deliver Update Account View
  * ************************/
 router.get(
@@ -87,14 +77,23 @@ router.get(
 )
 
 /* ***********************
- * Process Account (this is confuses... DONT TOUCH!!!)
- * Unit 5, ONLY ADMIN CAN CHANGE ROLES
+ * Process Account
+ * Unit 5,  Update Account
  * ************************/
 router.post(
-  "/update-account-type",
+  "/update-view",
   utilities.checkLogin,
-  utilities.checkAdmin,
-  utilities.handleErrors(accountController.updateAccountType)
+  regValidate.accountUpdateRules(),
+  regValidate.checkAccountUpdateData,
+  utilities.handleErrors(accountController.updateAccount)
+)
+
+router.post(
+  "/update-password",
+  utilities.checkLogin,
+  regValidate.passwordUpdateRules(),
+  regValidate.checkPasswordUpdateData,
+  utilities.handleErrors(accountController.updatePassword)
 )
 
 module.exports = router

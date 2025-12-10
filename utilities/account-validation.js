@@ -117,4 +117,86 @@ validate.checkLoginData = async (req, res, next) => {
   next();
 };
 
+/* **********************************
+* Account Update Validation Rules
+* ********************************* */
+
+validate.accountUpdateRules = () => {
+  return [
+    body("account_firstname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("First name is required."),
+
+    body("account_lastname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Last name is required."),
+
+    body("account_email")
+      .trim()
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("Valid email is required."),
+  ];
+};
+
+/* **********************************
+* Check Account Update Data
+* ********************************* */
+validate.checkAccountUpdateData = async (req, res, next) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    return res.render("account/update-view", {
+      errors,
+      title: "Update Account",
+      nav,
+      accountData: req.body,
+    });
+  }
+  next();
+};
+
+/* **********************************
+* Password Update Validation Rules
+* ********************************* */
+validate.passwordUpdateRules = () => {
+  return [
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .withMessage("Please provide a password.")
+      .isStrongPassword({
+        minLength: 12,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })
+      .withMessage("New password does not meet requirements."),
+  ];
+};
+
+/* **********************************
+* Check Password Update Data
+* ********************************* */
+validate.checkPasswordUpdateData = async (req, res, next) => {
+  let errors = [];
+  errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("account/update-view", {
+      title: "Update Account",
+      nav,
+      errors,
+      accountData: res.locals.accountData
+    });
+    return;
+  }
+  next();
+};
+
 module.exports = validate;
