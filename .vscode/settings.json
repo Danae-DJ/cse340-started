@@ -11,7 +11,7 @@
             "server": "localhost",
             "driver": "PostgreSQL",
             "name": "render.com",
-            "connectString": "postgresql://cse340dd:xFKabJYjkd6FaR12mF5ybeq7IXeRLMZk@dpg-d47eu4emcj7s73dbcqpg-a.virginia-postgres.render.com/cse340_database_gjbc"
+            "connectString": "postgresql://cse340_database_02_user:009Ff1ueWHthYh1A5o1SDXS1OXROyEx6@dpg-d4rmdsshg0os73d3fvj0-a.virginia-postgres.render.com/cse340_database_02"
         }
     ]
 }
