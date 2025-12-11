@@ -56,11 +56,30 @@ DONT TOUCH(WORKING)-->
                 one uppercase letter, one number, and one special character.
             </p>
         
+            <div id="pswdBtn">Show Password</div>
+
             <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
-        
             <button type="submit">Change Password</button>
         
         </fieldset>
     </form>
 
 </div>
+
+
+
+<!--Show password button-->
+<script>
+    const pswdBtn = document.getElementById("pswdBtn");
+    const pswdInput = document.querySelector("input[type='password']");
+
+    pswdBtn.addEventListener("click", () => {
+        if (pswdInput.type === "password") {
+            pswdInput.type = "text";
+            pswdBtn.textContent = "Hide Password";
+        } else {
+            pswdInput.type = "password";
+            pswdBtn.textContent = "Show Password";
+        }
+    });
+</script>

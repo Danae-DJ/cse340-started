@@ -44,10 +44,28 @@
                 <option value="Admin" <%=locals.account_type==="Admin" ? "selected" : "" %>>Admin</option>
             </select>
 
-                
             <div id="pswdBtn">Show Password</div>
             <button type="submit">Register</button>
         </fieldset>
     </form>
 </div>
 <script src="/js/script.js"></script>
+
+
+
+<!--Show password button-->
+<script>
+    const pswdBtn = document.getElementById("pswdBtn");
+    const pswdInput = document.querySelector("input[type='password']");
+
+    pswdBtn.addEventListener("click", () => {
+        if (pswdInput.type === "password") {
+            pswdInput.type = "text";
+            pswdBtn.textContent = "Hide Password";
+        } else {
+            pswdInput.type = "password";
+            pswdBtn.textContent = "Show Password";
+        }
+    });
+</script>
+
