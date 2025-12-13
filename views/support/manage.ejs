@@ -17,7 +17,7 @@
 </ul>
 <% } %>
 
-<div id="registerContainer">
+<div>
 <h1>Ticket List</h1>
 
 <table>
@@ -38,8 +38,8 @@
     <% tickets.forEach(ticket=> { %>
       <tr>
         <td><%= ticket.ticket_id %></td>
-        <td><%= ticket.ticket_name %></td>
-        <td><%= ticket.ticket_email %> </td>
+        <td><%= ticket.account_firstname %> <%= ticket.account_lastname %></td>
+        <td><%= ticket.account_email %> </td>
       
         <td>
           <%= ticket.ticket_message.length> 50
