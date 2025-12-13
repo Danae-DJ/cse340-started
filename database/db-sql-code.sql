@@ -237,3 +237,18 @@ VALUES   (
 
 --SELECT * FROM public.inventory
 --ORDER BY inv_id ASC 
+
+
+
+-- CREATE NEW TABLE TO SUPPORT TICKETS
+CREATE TABLE IF NOT EXISTS public.support_tickets (
+    ticket_id SERIAL PRIMARY KEY,
+    account_id INT NOT NULL,
+    ticket_subject VARCHAR(100) NOT NULL,
+    ticket_message TEXT NOT NULL,
+    ticket_status VARCHAR(20) DEFAULT 'open',
+    ticket_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (account_id)
+        REFERENCES account(account_id)
+        ON DELETE CASCADE
+);
