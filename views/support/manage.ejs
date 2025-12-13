@@ -27,8 +27,8 @@
       <th>Full Name</th>
       <th>Email</th>
       <th>Message</th>
+      <th>Date</th>
       <th>Status</th>
-      <th>Created</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -47,7 +47,7 @@
             : ticket.ticket_message %>
         </td>
       
-        <td><%= ticket.ticket_status %></td>
+        <td><%= ticket.ticket_created %></td>
       
         <td>
           <span class="ticket-status <%= ticket.ticket_status %>">

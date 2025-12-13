@@ -30,16 +30,20 @@ async function getTicketsByAccount(account_id) {
 
 /* All tickets (Employee/Admin) */
 async function getAllTickets() {
-  const sql = `
+  try {
+    const sql = `
     SELECT t.ticket_id, t.ticket_subject, t.ticket_message, t.ticket_status,
            to_char(t.ticket_created, 'YYYY-MM-DD HH24:MI') AS ticket_created,
            a.account_firstname, a.account_lastname, a.account_email
     FROM support_tickets t
     JOIN account a ON t.account_id = a.account_id
-    ORDER BY t.ticket_status, t.ticket_created DESC
+    ORDER BY t.ticket_status ASC, t.ticket_created DESC
   `
-  const result = await pool.query(sql)
-  return result.rows
+    const result = await pool.query(sql)
+    return result.rows
+  } catch (error) {
+    console.error("getAllTickets error:", error)
+  }
 }
 
 /* Ticket by ID */

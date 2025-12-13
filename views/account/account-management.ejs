@@ -41,6 +41,13 @@
 
 <% } %>
 
+<% if ( locals.accountData.account_type==="Employee" || locals.accountData.account_type==="Admin" ) { %>
+    <h3>Support Management</h3>
+    <p>
+        <a href="/support/manage">Manage Tickets</a>
+    </p>
+<% } %>
+
 <!-- 
 <h1>Wellcome New</h1> 
 <h2>You're logged in</h2> 
