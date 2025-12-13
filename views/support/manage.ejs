@@ -24,8 +24,7 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Full Name</th>
-      <th>Email</th>
+      <th>Name</th>
       <th>Message</th>
       <th>Date</th>
       <th>Status</th>
@@ -38,8 +37,7 @@
     <% tickets.forEach(ticket=> { %>
       <tr>
         <td><%= ticket.ticket_id %></td>
-        <td><%= ticket.account_firstname %> <%= ticket.account_lastname %></td>
-        <td><%= ticket.account_email %> </td>
+        <td><%= ticket.account_firstname %></td>
       
         <td>
           <%= ticket.ticket_message.length> 50
