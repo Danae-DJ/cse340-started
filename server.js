@@ -18,6 +18,8 @@ const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+//support tickets
+const supportRouter = require("./routes/supportRoute")
 
 /* ***********************
  * View Engine and Templates"
@@ -68,6 +70,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
 //Account routes - Unit 4, activity
 app.use("/account", accountRoute);
+//Support routes - unit 6
+app.use("/support", supportRouter);
 
 /* ***********************
 * File Not Found Route - must be last route in l ist

@@ -177,7 +177,7 @@ Util.checkAdmin = (req, res, next) => {
 
 /* ****************************************
  *  Check Employee or Admin Access// so confusing DON'T TOUCH!!!
- * ************************************ */
+ * ************************************ 
 Util.checkEmployeeOrAdmin = (req, res, next) => {
   if (
     res.locals.loggedin &&
@@ -189,7 +189,7 @@ Util.checkEmployeeOrAdmin = (req, res, next) => {
     req.flash("notice", "Employee or Admin access required.")
     return res.redirect("/account/")
   }
-}
+}*/
 
 /* ****************************************
  * Unit 5: When login by type

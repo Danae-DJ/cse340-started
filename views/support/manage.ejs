@@ -1,0 +1,65 @@
+<!--manage.ejs — Ticket List (Employee/Admin only)-->
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+<% } else { res.redirect('/') } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error=> { %>
+    <li>
+        <%= error.msg %>
+    </li>
+    <% }) %>
+</ul>
+<% } %>
+
+<div id="registerContainer">
+<h1>Ticket List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>Status</th>
+      <th>Created</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% tickets.forEach(ticket=> { %>
+      <tr>
+        <td><%= ticket.ticket_id %></td>
+        <td><%= ticket.ticket_name %></td>
+        <td><%= ticket.ticket_email %> </td>
+      
+        <td>
+          <%= ticket.ticket_message.length> 50
+            ? ticket.ticket_message.substring(0, 50) + "..."
+            : ticket.ticket_message %>
+        </td>
+      
+        <td><%= ticket.ticket_status %></td>
+      
+        <td>
+          <span class="ticket-status <%= ticket.ticket_status %>">
+            <%= ticket.ticket_status.replace("_", " " ) %>
+          </span>
+        </td>
+      
+        <td>
+          <a href="/support/<%= ticket.ticket_id %>">Show</a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,42 @@
+<!--Form to Create a Ticket-->
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+<% } else { res.redirect('/') } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error=> { %>
+    <li>
+        <%= error.msg %>
+    </li>
+    <% }) %>
+</ul>
+<% } %>
+
+<div id="registerContainer">
+<h1>Create Support Ticket</h1>
+
+    <form id="registerForm" action="/support" method="POST">
+    
+        <p>
+            <strong>User:</strong>
+            <%= locals.accountData.account_firstname %><br>
+                <strong>Email:</strong>
+                <%= locals.accountData.account_email %>
+        </p>
+    
+        <label for="ticket_subject">Subject</label>
+        <input type="text" name="ticket_subject" required maxlength="100" value="<%= ticket_subject %>">
+    
+        <label for="ticket_message">Message</label>
+        <textarea name="ticket_message" required maxlength="2500"><%= ticket_message %></textarea>
+    
+        <button type="submit">Send Ticket</button>
+    </form>
+
+
+</div>

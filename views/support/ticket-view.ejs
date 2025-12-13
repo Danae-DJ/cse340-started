@@ -1,0 +1,42 @@
+<!--ticket-view.ejs — View an Individual Ticket-->
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+<% } else { res.redirect('/') } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error=> { %>
+    <li>
+        <%= error.msg %>
+    </li>
+    <% }) %>
+</ul>
+<% } %>
+
+<div id="registerContainer">
+<h1>Ticket #<%= ticket.ticket_id %></h1>
+
+<p><strong>Name:</strong> <%= ticket.account_firstname %> <%= ticket.account_lastname %></p>
+<p><strong>Email:</strong> <%= ticket.account_email %></p>
+<p><strong>Subject:</strong> <%= ticket.ticket_subject %></p>
+<p><strong>Message:</strong> <%= ticket.ticket_message %></p>
+<p><strong>Status:</strong> <%= ticket.ticket_status %></p>
+
+<form id="registerForm" action="/support/<%= ticket.ticket_id %>" method="POST">
+    <select name="ticket_status">
+        <option value="open" <%=ticket.ticket_status==="open" ? "selected" : "" %>>Open</option>
+        <option value="in_progress" <%=ticket.ticket_status==="in_progress" ? "selected" : "" %>>In Progress</option>
+        <option value="closed" <%=ticket.ticket_status==="closed" ? "selected" : "" %>>Closed</option>
+    </select>
+    <button type="submit">Update</button>
+</form>
+
+<p>
+    <a href="/support/manage">Back to List</a>
+</p>
+
+</div>

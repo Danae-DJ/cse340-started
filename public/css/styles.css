@@ -490,6 +490,87 @@ select:not(:-internal-list-box) {
 
 /* END add-inventory//add-classification styles*/
 
+/*BEGIN table manage.ejs*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--primary-background);
+  font-family: var(--body-font);
+  color: var(--primary-text);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Header */
+thead {
+  background-color: var(--main-accent);
+  color: white;
+}
+
+thead th {
+  padding: 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Body */
+tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e5e5;
+  vertical-align: top;
+  font-size: 0.9rem;
+}
+
+/* Zebra striping */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect */
+tbody tr:hover {
+  background-color: rgba(1, 176, 211, 0.08);
+}
+
+/* Status styling */
+td:last-child {
+  text-align: center;
+}
+
+/* Ticket status badges (optional but nice) */
+.ticket-status {
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.ticket-status.open {
+  background-color: var(--invalid);
+}
+
+.ticket-status.in_progress {
+  background-color: #ffe8a1;
+}
+
+.ticket-status.closed {
+  background-color: var(--valid);
+}
+
+/* Action links */
+table a {
+  color: var(--main-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+table a:hover {
+  text-decoration: underline;
+}
+/*END table manage.ejs*/
+
 @media only screen and (min-width: 768px) {
   body {
     background-image: linear-gradient(45deg, #000 25%, transparent 25%),
@@ -620,5 +701,70 @@ select:not(:-internal-list-box) {
     object-fit: contain;
   }
 
-  /* END detail styles */
+/*BEGIN table manage.ejs*/
+  table {
+    font-size: 0.95rem;
+  }
+
+  thead th {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  tbody td {
+    padding: 1rem;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  table {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+    /*END table manage.ejs*/
 }
+
+
+  /* END detail styles */
+
+/*BEGIN table manage.ejs*/
+@media (max-width: 767px) {
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem;
+    background-color: #fff;
+  }
+
+  tbody td {
+    border: none;
+    padding: 0.4rem 0;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--primary-text);
+  }
+}
+/*BEGIN table manage.ejs*/

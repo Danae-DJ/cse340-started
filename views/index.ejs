@@ -63,3 +63,32 @@
         </div>
     </section>
 </div>
+
+<section id="support">
+
+    <% if (locals.accountData) { %>
+
+        <% if (locals.accountData.account_type === "Client") { %>
+            <p>
+                <a href="/support">Need help? Create a ticket</a>
+            </p>
+        <% } %>
+
+        <% if (
+            locals.accountData.account_type === "Employee" ||
+            locals.accountData.account_type === "Admin"
+        ) { %>
+            <h3>Support Management</h3>
+            <p>
+                <a href="/support/manage">Manage Tickets</a>
+            </p>
+        <% } %>
+
+    <% } else { %>
+        <!-- Optional: mensaje para visitantes -->
+        <p>
+            <a href="/support">Need help? Create a ticket</a>
+        </p>
+    <% } %>
+
+</section>
